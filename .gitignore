@@ -1,0 +1,66 @@
+# Composer
+/vendor/
+#composer.lock
+
+# Environment variables
+.env
+.env.backup
+.env.local
+.env.development
+.env.testing
+.env.production
+
+# IDE-specific files
+.idea/
+.vscode/
+.buildpath
+.project
+.settings/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Logs and temporary files
+/logs/
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Cache and compiled files
+/cache/
+/tmp/
+/var/cache/
+/var/log/
+/var/sessions/
+/web/assets/
+/public/assets/
+/public/build/
+
+# PHP-specific
+*.phar
+*.php~
+*.php.bak
+php.ini
+.user.ini
+
+# Test and coverage reports
+/build/
+/coverage/
+.phpunit.result.cache
+
+# Node.js (if frontend assets are managed with npm/yarn)
+/node_modules/
+npm-debug.log
+yarn-error.log
