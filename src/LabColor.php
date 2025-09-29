@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\ColorConverter;
+namespace ChernegaSergiy\ColorConverter;
 
 use InvalidArgumentException;
 
@@ -63,14 +63,11 @@ class LabColor extends ColorModel
     public function getB(): float { return $this->b; }
 
     /**
-     * Converts the Lab color to RGB. This conversion typically involves an intermediate XYZ conversion.
+     * Converts the Lab color to RGB, using the XYZ color space as an intermediate step.
      * @return RgbColor The color represented in RGB.
      */
     public function toRgb(): RgbColor
     {
-        // This is a simplified conversion and might not be perfectly accurate without a full XYZ conversion.
-        // For a more accurate conversion, an intermediate XYZ step would be required.
-
         $y = ($this->l + 16) / 116;
         $x = $this->a / 500 + $y;
         $z = $y - $this->b / 200;
