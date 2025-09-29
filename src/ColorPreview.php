@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\ColorConverter;
+namespace ChernegaSergiy\ColorConverter;
 
 /**
  * Provides functionality to display a color preview in the terminal.

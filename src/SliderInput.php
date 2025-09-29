@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\ColorConverter;
+namespace ChernegaSergiy\ColorConverter;
 
 /**
  * Provides an interactive slider input for terminal applications.

@@ -18,8 +18,8 @@ require_once __DIR__ . '/src/SliderInput.php';
 require_once __DIR__ . '/src/ColorPreview.php';
 require_once __DIR__ . '/src/ColorConverterApp.php';
 
-use App\ColorConverter\ColorConverterApp;
-use App\ColorConverter\Terminal;
+use ChernegaSergiy\ColorConverter\ColorConverterApp;
+use ChernegaSergiy\ColorConverter\Terminal;
 use Exception;
 
 if (php_sapi_name() === 'cli') {
