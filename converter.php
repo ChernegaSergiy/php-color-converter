@@ -364,6 +364,16 @@ class Terminal
     {
         echo "\033[?25h";
     }
+
+    public static function enterAlternativeScreen(): void
+    {
+        echo "\033[?1049h";
+    }
+
+    public static function exitAlternativeScreen(): void
+    {
+        echo "\033[?1049l";
+    }
 }
 
 // Interactive menu
@@ -644,6 +654,7 @@ class ColorConverterApp
                         break;
                     case 6:
                         Terminal::clearScreen();
+                        Terminal::exitAlternativeScreen();
                         echo "\n  До побачення!\n\n";
                         exit(0);
                 }
@@ -806,11 +817,13 @@ class ColorConverterApp
 // Entry point
 if (php_sapi_name() === 'cli') {
     try {
+        Terminal::enterAlternativeScreen();
         $app = new ColorConverterApp();
         $app->run();
     } catch (Exception $e) {
         Terminal::disableRawMode();
         Terminal::showCursor();
+        Terminal::exitAlternativeScreen();
         echo "\n\033[1;31mКритична помилка:\033[0m " . $e->getMessage() . "\n\n";
         exit(1);
     }
