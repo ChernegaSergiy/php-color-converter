@@ -1,5 +1,9 @@
 # PHP Color Converter
 
+[![Latest Stable Version](https://img.shields.io/packagist/v/chernegasergiy/color-converter.svg?label=Packagist&logo=packagist)](https://packagist.org/packages/chernegasergiy/color-converter)
+[![Total Downloads](https://img.shields.io/packagist/dt/chernegasergiy/color-converter.svg?label=Downloads&logo=packagist)](https://packagist.org/packages/chernegasergiy/color-converter)
+[![License](https://img.shields.io/packagist/l/chernegasergiy/color-converter.svg?label=Licence&logo=open-source-initiative)](https://packagist.org/packages/chernegasergiy/color-converter)
+
 A standalone, interactive command-line tool for converting color models, written in pure PHP.
 
 ## Features
