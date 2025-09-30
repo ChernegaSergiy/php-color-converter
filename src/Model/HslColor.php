@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ChernegaSergiy\ColorConverter;
+namespace ChernegaSergiy\ColorConverter\Model;
 
 use InvalidArgumentException;
 
@@ -37,7 +37,7 @@ class HslColor extends ColorModel
      * @param float $l The lightness component (0-100).
      * @throws InvalidArgumentException If any HSL value is out of range.
      */
-    private function validate(float $h, float $s, float $l): void
+    private function validate(float $h, float $s, float $l) : void
     {
         if ($h < 0 || $h > 360 || $s < 0 || $s > 100 || $l < 0 || $l > 100) {
             throw new InvalidArgumentException("HSL values must be between 0 and 360 (H) or 0 and 100 (S, L)");
@@ -48,25 +48,34 @@ class HslColor extends ColorModel
      * Get the hue component.
      * @return float
      */
-    public function getH(): float { return $this->h; }
+    public function getH() : float
+    {
+        return $this->h;
+    }
 
     /**
      * Get the saturation component.
      * @return float
      */
-    public function getS(): float { return $this->s; }
+    public function getS() : float
+    {
+        return $this->s;
+    }
 
     /**
      * Get the lightness component.
      * @return float
      */
-    public function getL(): float { return $this->l; }
+    public function getL() : float
+    {
+        return $this->l;
+    }
 
     /**
      * Converts the HSL color to RGB.
      * @return RgbColor The color represented in RGB.
      */
-    public function toRgb(): RgbColor
+    public function toRgb() : RgbColor
     {
         $h = $this->h / 360;
         $s = $this->s / 100;
@@ -92,15 +101,15 @@ class HslColor extends ColorModel
             $b = $hue2rgb($p, $q, $h - 1/3);
         }
 
-        return new RgbColor((int)round($r * 255), (int)round($g * 255), (int)round($b * 255));
+        return new RgbColor((int) round($r * 255), (int) round($g * 255), (int) round($b * 255));
     }
 
-    public function toString(): string
+    public function toString() : string
     {
         return sprintf("HSL(%.1f°, %.1f%%, %.1f%%)", $this->h, $this->s, $this->l);
     }
 
-    public function toArray(): array
+    public function toArray() : array
     {
         return ['h' => $this->h, 's' => $this->s, 'l' => $this->l];
     }

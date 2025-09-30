@@ -2,34 +2,34 @@
 
 declare(strict_types=1);
 
-namespace ChernegaSergiy\ColorConverter;
+namespace ChernegaSergiy\ColorConverter\UI;
 
 /**
  * Provides utility functions for terminal interaction.
  */
 class Terminal
 {
-    private static $sttySettings = null;
+    private static $stty_settings = null;
 
     /**
      * Enables raw mode for terminal input.
      */
-    public static function enableRawMode(): void
+    public static function enableRawMode() : void
     {
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
             return;
         }
-        self::$sttySettings = shell_exec('stty -g');
+        self::$stty_settings = shell_exec('stty -g');
         shell_exec('stty -icanon -echo');
     }
 
     /**
      * Disables raw mode for terminal input, restoring original settings.
      */
-    public static function disableRawMode(): void
+    public static function disableRawMode() : void
     {
-        if (self::$sttySettings !== null) {
-            shell_exec('stty ' . self::$sttySettings);
+        if (self::$stty_settings !== null) {
+            shell_exec('stty ' . self::$stty_settings);
         }
     }
 
@@ -37,7 +37,7 @@ class Terminal
      * Reads a single key press from the terminal.
      * @return string The key pressed (e.g., 'up', 'down', 'enter', 'esc', or the character itself).
      */
-    public static function readKey(): string
+    public static function readKey() : string
     {
         $key = fread(STDIN, 3);
 
@@ -58,7 +58,7 @@ class Terminal
     /**
      * Clears the terminal screen.
      */
-    public static function clearScreen(): void
+    public static function clearScreen() : void
     {
         echo "\033[2J\033[H";
     }
@@ -68,7 +68,7 @@ class Terminal
      * @param int $row The row number (1-based).
      * @param int $col The column number (1-based).
      */
-    public static function moveCursor(int $row, int $col): void
+    public static function moveCursor(int $row, int $col) : void
     {
         echo "\033[{$row};{$col}H";
     }
@@ -76,7 +76,7 @@ class Terminal
     /**
      * Hides the terminal cursor.
      */
-    public static function hideCursor(): void
+    public static function hideCursor() : void
     {
         echo "\033[?25l";
     }
@@ -84,7 +84,7 @@ class Terminal
     /**
      * Shows the terminal cursor.
      */
-    public static function showCursor(): void
+    public static function showCursor() : void
     {
         echo "\033[?25h";
     }
@@ -92,7 +92,7 @@ class Terminal
     /**
      * Enters the alternative terminal screen buffer.
      */
-    public static function enterAlternativeScreen(): void
+    public static function enterAlternativeScreen() : void
     {
         echo "\033[?1049h";
     }
@@ -100,7 +100,7 @@ class Terminal
     /**
      * Exits the alternative terminal screen buffer.
      */
-    public static function exitAlternativeScreen(): void
+    public static function exitAlternativeScreen() : void
     {
         echo "\033[?1049l";
     }

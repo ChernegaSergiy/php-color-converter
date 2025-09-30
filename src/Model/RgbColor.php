@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ChernegaSergiy\ColorConverter;
+namespace ChernegaSergiy\ColorConverter\Model;
 
 use InvalidArgumentException;
 
@@ -37,7 +37,7 @@ class RgbColor extends ColorModel
      * @param int $b The blue component (0-255).
      * @throws InvalidArgumentException If any RGB value is out of range.
      */
-    private function validate(int $r, int $g, int $b): void
+    private function validate(int $r, int $g, int $b) : void
     {
         if ($r < 0 || $r > 255 || $g < 0 || $g > 255 || $b < 0 || $b > 255) {
             throw new InvalidArgumentException("RGB values must be between 0 and 255");
@@ -48,21 +48,30 @@ class RgbColor extends ColorModel
      * Get the red component.
      * @return int
      */
-    public function getR(): int { return $this->r; }
+    public function getR() : int
+    {
+        return $this->r;
+    }
 
     /**
      * Get the green component.
      * @return int
      */
-    public function getG(): int { return $this->g; }
+    public function getG() : int
+    {
+        return $this->g;
+    }
 
     /**
      * Get the blue component.
      * @return int
      */
-    public function getB(): int { return $this->b; }
+    public function getB() : int
+    {
+        return $this->b;
+    }
 
-    public function toRgb(): RgbColor
+    public function toRgb() : RgbColor
     {
         return $this;
     }
@@ -71,7 +80,7 @@ class RgbColor extends ColorModel
      * Converts the RGB color to CMYK.
      * @return CmykColor The color represented in CMYK.
      */
-    public function toCmyk(): CmykColor
+    public function toCmyk() : CmykColor
     {
         $r_norm = $this->r / 255;
         $g_norm = $this->g / 255;
@@ -94,7 +103,7 @@ class RgbColor extends ColorModel
      * Converts the RGB color to HSV.
      * @return HsvColor The color represented in HSV.
      */
-    public function toHsv(): HsvColor
+    public function toHsv() : HsvColor
     {
         $r_norm = $this->r / 255.0;
         $g_norm = $this->g / 255.0;
@@ -136,7 +145,7 @@ class RgbColor extends ColorModel
      * Converts the RGB color to HSL.
      * @return HslColor The color represented in HSL.
      */
-    public function toHsl(): HslColor
+    public function toHsl() : HslColor
     {
         $r = $this->r / 255;
         $g = $this->g / 255;
@@ -173,7 +182,7 @@ class RgbColor extends ColorModel
      * Converts the RGB color to CIELAB.
      * @return LabColor The color represented in CIELAB.
      */
-    public function toLab(): LabColor
+    public function toLab() : LabColor
     {
         $r = $this->r / 255;
         $g = $this->g / 255;
@@ -211,7 +220,7 @@ class RgbColor extends ColorModel
      * Converts the RGB color to YCbCr.
      * @return YcbcrColor The color represented in YCbCr.
      */
-    public function toYcbcr(): YcbcrColor
+    public function toYcbcr() : YcbcrColor
     {
         $r = $this->r;
         $g = $this->g;
@@ -224,12 +233,12 @@ class RgbColor extends ColorModel
         return new YcbcrColor(round($y), round($cb), round($cr));
     }
 
-    public function toString(): string
+    public function toString() : string
     {
         return sprintf("RGB(%d, %d, %d)", $this->r, $this->g, $this->b);
     }
 
-    public function toArray(): array
+    public function toArray() : array
     {
         return ['r' => $this->r, 'g' => $this->g, 'b' => $this->b];
     }
@@ -238,7 +247,7 @@ class RgbColor extends ColorModel
      * Returns the hexadecimal representation of the RGB color.
      * @return string The hexadecimal color code (e.g., "#RRGGBB").
      */
-    public function getHexColor(): string
+    public function getHexColor() : string
     {
         return sprintf("#%02x%02x%02x", $this->r, $this->g, $this->b);
     }

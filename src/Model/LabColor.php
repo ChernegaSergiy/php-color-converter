@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ChernegaSergiy\ColorConverter;
+namespace ChernegaSergiy\ColorConverter\Model;
 
 use InvalidArgumentException;
 
@@ -37,7 +37,7 @@ class LabColor extends ColorModel
      * @param float $b The blue-yellow component (-128 to 127).
      * @throws InvalidArgumentException If any Lab value is out of range.
      */
-    private function validate(float $l, float $a, float $b): void
+    private function validate(float $l, float $a, float $b) : void
     {
         if ($l < 0 || $l > 100 || $a < -128 || $a > 127 || $b < -128 || $b > 127) {
             throw new InvalidArgumentException("Lab values are out of range.");
@@ -48,25 +48,34 @@ class LabColor extends ColorModel
      * Get the lightness component.
      * @return float
      */
-    public function getL(): float { return $this->l; }
+    public function getL() : float
+    {
+        return $this->l;
+    }
 
     /**
      * Get the green-red component.
      * @return float
      */
-    public function getA(): float { return $this->a; }
+    public function getA() : float
+    {
+        return $this->a;
+    }
 
     /**
      * Get the blue-yellow component.
      * @return float
      */
-    public function getB(): float { return $this->b; }
+    public function getB() : float
+    {
+        return $this->b;
+    }
 
     /**
      * Converts the Lab color to RGB, using the XYZ color space as an intermediate step.
      * @return RgbColor The color represented in RGB.
      */
-    public function toRgb(): RgbColor
+    public function toRgb() : RgbColor
     {
         $y = ($this->l + 16) / 116;
         $x = $this->a / 500 + $y;
@@ -88,15 +97,15 @@ class LabColor extends ColorModel
         $g = round(max(0, min(1, $g)) * 255);
         $b = round(max(0, min(1, $b)) * 255);
 
-        return new RgbColor((int)$r, (int)$g, (int)$b);
+        return new RgbColor((int) $r, (int) $g, (int) $b);
     }
 
-    public function toString(): string
+    public function toString() : string
     {
         return sprintf("Lab(%.1f, %.1f, %.1f)", $this->l, $this->a, $this->b);
     }
 
-    public function toArray(): array
+    public function toArray() : array
     {
         return ['l' => $this->l, 'a' => $this->a, 'b' => $this->b];
     }

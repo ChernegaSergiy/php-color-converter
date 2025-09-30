@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ChernegaSergiy\ColorConverter;
+namespace ChernegaSergiy\ColorConverter\UI;
+
+use ChernegaSergiy\ColorConverter\Model\RgbColor;
 
 /**
  * Provides functionality to display a color preview in the terminal.
@@ -14,7 +16,7 @@ class ColorPreview
      * @param RgbColor $color The RGB color to preview.
      * @param bool $compact If true, displays a compact preview; otherwise, a detailed preview.
      */
-    public static function show(RgbColor $color, bool $compact = false): void
+    public static function show(RgbColor $color, bool $compact = false) : void
     {
         $r = $color->getR();
         $g = $color->getG();

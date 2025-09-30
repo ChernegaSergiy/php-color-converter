@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ChernegaSergiy\ColorConverter;
+namespace ChernegaSergiy\ColorConverter\History;
 
+use ChernegaSergiy\ColorConverter\Model\ColorModel;
 use DateTime;
 
 /**
@@ -31,25 +32,34 @@ class ConversionRecord
      * Get the original color model.
      * @return ColorModel
      */
-    public function getFrom(): ColorModel { return $this->from; }
+    public function getFrom() : ColorModel
+    {
+        return $this->from;
+    }
 
     /**
      * Get the converted color model.
      * @return ColorModel
      */
-    public function getTo(): ColorModel { return $this->to; }
+    public function getTo() : ColorModel
+    {
+        return $this->to;
+    }
 
     /**
      * Get the timestamp of the conversion.
      * @return DateTime
      */
-    public function getTimestamp(): DateTime { return $this->timestamp; }
+    public function getTimestamp() : DateTime
+    {
+        return $this->timestamp;
+    }
 
     /**
      * Returns a string representation of the conversion record.
      * @return string
      */
-    public function __toString(): string
+    public function __toString() : string
     {
         return sprintf("[%s] %s -> %s",
                        $this->timestamp->format('H:i:s'),

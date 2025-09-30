@@ -1,0 +1,17 @@
+{
+    "name": "chernegasergiy/color-converter",
+    "description": "A simple PHP color converter CLI application.",
+    "type": "project",
+    "license": "LicenseRef-CSSM-Unlimited-2.0",
+    "authors": [
+        {
+            "name": "Serhii Chernega",
+            "email": "chernegasergiy3@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ChernegaSergiy\\ColorConverter\\": "src/"
+        }
+    }
+}

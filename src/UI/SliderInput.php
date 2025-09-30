@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ChernegaSergiy\ColorConverter;
+namespace ChernegaSergiy\ColorConverter\UI;
 
 /**
  * Provides an interactive slider input for terminal applications.
@@ -36,7 +36,7 @@ class SliderInput
      * Displays the slider and allows the user to adjust the value.
      * @return int The selected value.
      */
-    public function read(): int
+    public function read() : int
     {
         Terminal::enableRawMode();
         Terminal::hideCursor();
@@ -71,21 +71,21 @@ class SliderInput
     /**
      * Renders the slider on the terminal.
      */
-    private function render(): void
+    private function render() : void
     {
         Terminal::clearScreen();
 
         echo "\n  {$this->label}\n\n";
 
         // Progress bar
-        $barWidth = 50;
+        $bar_width = 50;
         $percentage = ($this->value - $this->min) / ($this->max - $this->min);
-        $filled = (int)($barWidth * $percentage);
+        $filled = (int) ($bar_width * $percentage);
 
         echo "  \033[36m";
         echo str_repeat("█", $filled);
         echo "\033[90m";
-        echo str_repeat("░", $barWidth - $filled);
+        echo str_repeat("░", $bar_width - $filled);
         echo "\033[0m\n\n";
 
         echo "  \033[1;33m{$this->value}\033[0m / {$this->max}\n\n";

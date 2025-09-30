@@ -1,25 +1,9 @@
 <?php
 
-declare(strict_types=1);
+require __DIR__ . '/vendor/autoload.php';
 
-require_once __DIR__ . '/src/ColorModel.php';
-require_once __DIR__ . '/src/RgbColor.php';
-require_once __DIR__ . '/src/CmykColor.php';
-require_once __DIR__ . '/src/HsvColor.php';
-require_once __DIR__ . '/src/HslColor.php';
-require_once __DIR__ . '/src/LabColor.php';
-require_once __DIR__ . '/src/YcbcrColor.php';
-require_once __DIR__ . '/src/ConversionRecord.php';
-require_once __DIR__ . '/src/ConversionHistory.php';
-require_once __DIR__ . '/src/Terminal.php';
-require_once __DIR__ . '/src/InteractiveMenu.php';
-require_once __DIR__ . '/src/InteractiveInput.php';
-require_once __DIR__ . '/src/SliderInput.php';
-require_once __DIR__ . '/src/ColorPreview.php';
-require_once __DIR__ . '/src/ColorConverterApp.php';
-
-use ChernegaSergiy\ColorConverter\ColorConverterApp;
-use ChernegaSergiy\ColorConverter\Terminal;
+use ChernegaSergiy\ColorConverter\App\ColorConverterApp;
+use ChernegaSergiy\ColorConverter\UI\Terminal;
 use Exception;
 
 if (php_sapi_name() === 'cli') {

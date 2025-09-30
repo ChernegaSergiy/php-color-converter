@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ChernegaSergiy\ColorConverter;
+namespace ChernegaSergiy\ColorConverter\UI;
 
 /**
  * Provides an interactive menu for terminal applications.
@@ -28,7 +28,7 @@ class InteractiveMenu
      * Displays the interactive menu and returns the index of the selected item.
      * @return int The index of the selected menu item.
      */
-    public function show(): int
+    public function show() : int
     {
         Terminal::enableRawMode();
         Terminal::hideCursor();
@@ -61,7 +61,7 @@ class InteractiveMenu
     /**
      * Renders the menu on the terminal.
      */
-    private function render(): void
+    private function render() : void
     {
         Terminal::clearScreen();
 

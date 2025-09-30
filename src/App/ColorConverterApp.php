@@ -2,8 +2,21 @@
 
 declare(strict_types=1);
 
-namespace ChernegaSergiy\ColorConverter;
+namespace ChernegaSergiy\ColorConverter\App;
 
+use ChernegaSergiy\ColorConverter\History\ConversionHistory;
+use ChernegaSergiy\ColorConverter\Model\CmykColor;
+use ChernegaSergiy\ColorConverter\Model\ColorModel;
+use ChernegaSergiy\ColorConverter\Model\HslColor;
+use ChernegaSergiy\ColorConverter\Model\HsvColor;
+use ChernegaSergiy\ColorConverter\Model\LabColor;
+use ChernegaSergiy\ColorConverter\Model\RgbColor;
+use ChernegaSergiy\ColorConverter\Model\YcbcrColor;
+use ChernegaSergiy\ColorConverter\UI\ColorPreview;
+use ChernegaSergiy\ColorConverter\UI\InteractiveInput;
+use ChernegaSergiy\ColorConverter\UI\InteractiveMenu;
+use ChernegaSergiy\ColorConverter\UI\SliderInput;
+use ChernegaSergiy\ColorConverter\UI\Terminal;
 use Exception;
 
 /**
@@ -24,7 +37,7 @@ class ColorConverterApp
     /**
      * Runs the main application loop.
      */
-    public function run(): void
+    public function run() : void
     {
         while (true) {
             $menu = new InteractiveMenu(
@@ -101,7 +114,7 @@ class ColorConverterApp
     /**
      * Handles the RGB to CMYK conversion process.
      */
-    private function convertRgbToCmyk(): void
+    private function convertRgbToCmyk() : void
     {
         Terminal::clearScreen();
         echo "\n  \033[1;36mRGB → CMYK Конвертація\033[0m\n\n";
@@ -120,7 +133,7 @@ class ColorConverterApp
     /**
      * Handles the CMYK to RGB conversion process.
      */
-    private function convertCmykToRgb(): void
+    private function convertCmykToRgb() : void
     {
         Terminal::clearScreen();
         echo "\n  \033[1;36mCMYK → RGB Конвертація\033[0m\n\n";
@@ -140,7 +153,7 @@ class ColorConverterApp
     /**
      * Handles the RGB to HSV conversion process.
      */
-    private function convertRgbToHsv(): void
+    private function convertRgbToHsv() : void
     {
         Terminal::clearScreen();
         echo "\n  \033[1;36mRGB → HSV Конвертація\033[0m\n\n";
@@ -159,7 +172,7 @@ class ColorConverterApp
     /**
      * Handles the HSV to RGB conversion process.
      */
-    private function convertHsvToRgb(): void
+    private function convertHsvToRgb() : void
     {
         Terminal::clearScreen();
         echo "\n  \033[1;36mHSV → RGB Конвертація\033[0m\n\n";
@@ -178,7 +191,7 @@ class ColorConverterApp
     /**
      * Handles the RGB to HSL conversion process.
      */
-    private function convertRgbToHsl(): void
+    private function convertRgbToHsl() : void
     {
         Terminal::clearScreen();
         echo "\n  \033[1;36mRGB → HSL Конвертація\033[0m\n\n";
@@ -197,7 +210,7 @@ class ColorConverterApp
     /**
      * Handles the HSL to RGB conversion process.
      */
-    private function convertHslToRgb(): void
+    private function convertHslToRgb() : void
     {
         Terminal::clearScreen();
         echo "\n  \033[1;36mHSL → RGB Конвертація\033[0m\n\n";
@@ -216,7 +229,7 @@ class ColorConverterApp
     /**
      * Handles the RGB to Lab conversion process.
      */
-    private function convertRgbToLab(): void
+    private function convertRgbToLab() : void
     {
         Terminal::clearScreen();
         echo "\n  \033[1;36mRGB → Lab Конвертація\033[0m\n\n";
@@ -235,7 +248,7 @@ class ColorConverterApp
     /**
      * Handles the Lab to RGB conversion process.
      */
-    private function convertLabToRgb(): void
+    private function convertLabToRgb() : void
     {
         Terminal::clearScreen();
         echo "\n  \033[1;36mLab → RGB Конвертація\033[0m\n\n";
@@ -254,7 +267,7 @@ class ColorConverterApp
     /**
      * Handles the RGB to YCbCr conversion process.
      */
-    private function convertRgbToYcbcr(): void
+    private function convertRgbToYcbcr() : void
     {
         Terminal::clearScreen();
         echo "\n  \033[1;36mRGB → YCbCr Конвертація\033[0m\n\n";
@@ -273,7 +286,7 @@ class ColorConverterApp
     /**
      * Handles the YCbCr to RGB conversion process.
      */
-    private function convertYcbcrToRgb(): void
+    private function convertYcbcrToRgb() : void
     {
         Terminal::clearScreen();
         echo "\n  \033[1;36mYCbCr → RGB Конвертація\033[0m\n\n";
@@ -292,7 +305,7 @@ class ColorConverterApp
     /**
      * Handles the RGB to all formats conversion process.
      */
-    private function convertAllFromRgb(): void
+    private function convertAllFromRgb() : void
     {
         Terminal::clearScreen();
         echo "\n  \033[1;36mRGB → Всі формати\033[0m\n\n";
@@ -332,7 +345,7 @@ class ColorConverterApp
      * @param ColorModel $from The original color model.
      * @param ColorModel $to The converted color model.
      */
-    private function showResult(ColorModel $from, ColorModel $to): void
+    private function showResult(ColorModel $from, ColorModel $to) : void
     {
         Terminal::clearScreen();
 
@@ -353,7 +366,7 @@ class ColorConverterApp
     /**
      * Displays the conversion history.
      */
-    private function showHistory(): void
+    private function showHistory() : void
     {
         Terminal::clearScreen();
 
@@ -381,7 +394,7 @@ class ColorConverterApp
      * Displays an error message.
      * @param string $message The error message to display.
      */
-    private function showError(string $message): void
+    private function showError(string $message) : void
     {
         Terminal::clearScreen();
         echo "\n  \033[1;31m✗ Помилка:\033[0m\n";
@@ -392,7 +405,7 @@ class ColorConverterApp
     /**
      * Waits for a key press from the user.
      */
-    private function waitForKey(): void
+    private function waitForKey() : void
     {
         echo "  [90mНатисніть будь-яку клавішу для продовження...\033[0m\n";
         Terminal::enableRawMode();
@@ -402,3 +415,4 @@ class ColorConverterApp
         Terminal::showCursor();
     }
 }
+

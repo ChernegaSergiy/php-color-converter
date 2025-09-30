@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ChernegaSergiy\ColorConverter;
+namespace ChernegaSergiy\ColorConverter\UI;
+
+use ChernegaSergiy\ColorConverter\Model\RgbColor;
 
 /**
  * Provides an interactive input field for terminal applications with live preview.
@@ -12,9 +14,9 @@ class InteractiveInput
     private string $prompt;
     private int $min;
     private int $max;
-    private string $currentValue = '';
-    private ?RgbColor $liveColor = null;
-    private $liveColorCallback; // Callable for live color preview
+    private string $current_value = '';
+    private ?RgbColor $live_color = null;
+    private $live_color_callback; // Callable for live color preview
 
     /**
      * InteractiveInput constructor.
@@ -34,16 +36,16 @@ class InteractiveInput
      * The callback will receive the current RgbColor object.
      * @param callable $callback The callback function.
      */
-    public function setLiveColorCallback(callable $callback): void
+    public function setLiveColorCallback(callable $callback) : void
     {
-        $this->liveColorCallback = $callback;
+        $this->live_color_callback = $callback;
     }
 
     /**
      * Reads an integer input from the user interactively.
      * @return int The validated integer input.
      */
-    public function read(): int
+    public function read() : int
     {
         Terminal::enableRawMode();
         Terminal::hideCursor();
@@ -54,15 +56,15 @@ class InteractiveInput
 
                 $key = Terminal::readKey();
 
-                if ($key === 'enter' && $this->currentValue !== '') {
-                    $value = (int)$this->currentValue;
+                if ($key === 'enter' && $this->current_value !== '') {
+                    $value = (int)$this->current_value;
                     if ($value >= $this->min && $value <= $this->max) {
                         break;
                     }
-                } elseif ($key === 'backspace' && strlen($this->currentValue) > 0) {
-                    $this->currentValue = substr($this->currentValue, 0, -1);
-                } elseif (ctype_digit($key) && strlen($this->currentValue) < 3) {
-                    $this->currentValue .= $key;
+                } elseif ($key === 'backspace' && strlen($this->current_value) > 0) {
+                    $this->current_value = substr($this->current_value, 0, -1);
+                } elseif (ctype_digit($key) && strlen($this->current_value) < 3) {
+                    $this->current_value .= $key;
                 }
             }
         } finally {
@@ -70,20 +72,20 @@ class InteractiveInput
             Terminal::showCursor();
         }
 
-        return (int)$this->currentValue;
+        return (int) $this->current_value;
     }
 
     /**
      * Renders the interactive input field on the terminal.
      */
-    private function render(): void
+    private function render() : void
     {
         Terminal::clearScreen();
         echo "\n  {$this->prompt}\n\n";
-        echo "  \033[1;33m{$this->currentValue}_\033[0m\n\n";
+        echo "  \033[1;33m{$this->current_value}_\033[0m\n\n";
 
-        if ($this->currentValue !== '') {
-            $value = (int)$this->currentValue;
+        if ($this->current_value !== '') {
+            $value = (int) $this->current_value;
             if ($value >= $this->min && $value <= $this->max) {
                 echo "  \033[32m✓ Валідне значення\033[0m\n";
             } else {

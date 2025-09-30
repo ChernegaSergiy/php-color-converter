@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ChernegaSergiy\ColorConverter;
+namespace ChernegaSergiy\ColorConverter\Model;
 
 use InvalidArgumentException;
 
@@ -37,7 +37,7 @@ class YcbcrColor extends ColorModel
      * @param float $cr The red-difference chrominance component (0-255).
      * @throws InvalidArgumentException If any YCbCr value is out of range.
      */
-    private function validate(float $y, float $cb, float $cr): void
+    private function validate(float $y, float $cb, float $cr) : void
     {
         if ($y < 0 || $y > 255 || $cb < 0 || $cb > 255 || $cr < 0 || $cr > 255) {
             throw new InvalidArgumentException("YCbCr values must be between 0 and 255.");
@@ -48,25 +48,34 @@ class YcbcrColor extends ColorModel
      * Get the luma component.
      * @return float
      */
-    public function getY(): float { return $this->y; }
+    public function getY() : float
+    {
+        return $this->y;
+    }
 
     /**
      * Get the blue-difference chrominance component.
      * @return float
      */
-    public function getCb(): float { return $this->cb; }
+    public function getCb() : float
+    {
+        return $this->cb;
+    }
 
     /**
      * Get the red-difference chrominance component.
      * @return float
      */
-    public function getCr(): float { return $this->cr; }
+    public function getCr() : float
+    {
+        return $this->cr;
+    }
 
     /**
      * Converts the YCbCr color to RGB.
      * @return RgbColor The color represented in RGB.
      */
-    public function toRgb(): RgbColor
+    public function toRgb() : RgbColor
     {
         $y = $this->y;
         $cb = $this->cb;
@@ -80,15 +89,15 @@ class YcbcrColor extends ColorModel
         $g = round(max(0, min(255, $g)));
         $b = round(max(0, min(255, $b)));
 
-        return new RgbColor((int)$r, (int)$g, (int)$b);
+        return new RgbColor((int) $r, (int) $g, (int) $b);
     }
 
-    public function toString(): string
+    public function toString() : string
     {
         return sprintf("YCbCr(%.1f, %.1f, %.1f)", $this->y, $this->cb, $this->cr);
     }
 
-    public function toArray(): array
+    public function toArray() : array
     {
         return ['y' => $this->y, 'cb' => $this->cb, 'cr' => $this->cr];
     }

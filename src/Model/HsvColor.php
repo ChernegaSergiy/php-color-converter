@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ChernegaSergiy\ColorConverter;
+namespace ChernegaSergiy\ColorConverter\Model;
 
 use InvalidArgumentException;
 
@@ -37,7 +37,7 @@ class HsvColor extends ColorModel
      * @param float $v The value component (0-100).
      * @throws InvalidArgumentException If any HSV value is out of range.
      */
-    private function validate(float $h, float $s, float $v): void
+    private function validate(float $h, float $s, float $v) : void
     {
         if ($h < 0 || $h > 360) {
             throw new InvalidArgumentException("H must be between 0 and 360");
@@ -51,25 +51,34 @@ class HsvColor extends ColorModel
      * Get the hue component.
      * @return float
      */
-    public function getH(): float { return $this->h; }
+    public function getH() : float
+    {
+        return $this->h;
+    }
 
     /**
      * Get the saturation component.
      * @return float
      */
-    public function getS(): float { return $this->s; }
+    public function getS() : float
+    {
+        return $this->s;
+    }
 
     /**
      * Get the value component.
      * @return float
      */
-    public function getV(): float { return $this->v; }
+    public function getV() : float
+    {
+        return $this->v;
+    }
 
     /**
      * Converts the HSV color to RGB. Requires RgbColor to be available.
      * @return RgbColor The color represented in RGB.
      */
-    public function toRgb(): RgbColor
+    public function toRgb() : RgbColor
     {
         $s = $this->s / 100;
         $v = $this->v / 100;
@@ -98,15 +107,15 @@ class HsvColor extends ColorModel
         $g = ($g1 + $m) * 255;
         $b = ($b1 + $m) * 255;
 
-        return new RgbColor((int)round($r), (int)round($g), (int)round($b));
+        return new RgbColor((int) round($r), (int) round($g), (int) round($b));
     }
 
-    public function toString(): string
+    public function toString() : string
     {
         return sprintf("HSV(%.1f°, %.1f%%, %.1f%%)", $this->h, $this->s, $this->v);
     }
 
-    public function toArray(): array
+    public function toArray() : array
     {
         return ['h' => $this->h, 's' => $this->s, 'v' => $this->v];
     }
