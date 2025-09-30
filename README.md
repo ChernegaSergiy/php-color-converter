@@ -4,7 +4,13 @@ A standalone, interactive command-line tool for converting color models, written
 
 ## Features
 
-- **Multiple Conversion Modes:** Convert between RGB, CMYK, and HSV.
+- **Multiple Conversion Modes:** Convert between the following color models:
+  - RGB ↔ CMYK
+  - RGB ↔ HSV
+  - RGB ↔ HSL
+  - RGB ↔ Lab
+  - RGB ↔ YCbCr
+  - RGB → All formats (one-click conversion to all supported models)
 - **Interactive UI:** A fully interactive, menu-driven interface that runs directly in your terminal.
 - **Live Previews:** See a preview of the color swatch in your terminal as you select values.
 - **Slider Input:** Use arrow keys to intuitively adjust color values with a visual slider.
@@ -18,6 +24,17 @@ A standalone, interactive command-line tool for converting color models, written
    ```bash
    php converter.php
    ```
+
+## Supported Conversions
+
+The tool supports the following direct conversions in both directions (unless otherwise noted):
+
+- **RGB → CMYK** and **CMYK → RGB**
+- **RGB → HSV** and **HSV → RGB**
+- **RGB → HSL** and **HSL → RGB**
+- **RGB → Lab** and **Lab → RGB**
+- **RGB → YCbCr** and **YCbCr → RGB**
+- **RGB → All formats:** Quickly convert RGB to all other supported models in a single operation
 
 ## Usage
 
