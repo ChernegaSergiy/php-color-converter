@@ -3,7 +3,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use ChernegaSergiy\ColorConverter\App\ColorConverterApp;
-use ChernegaSergiy\ColorConverter\Ui\Terminal;
+use ChernegaSergiy\TerminalUI\Terminal;
 use Exception;
 
 if (php_sapi_name() === 'cli') {
