@@ -13,5 +13,8 @@
         "psr-4": {
             "ChernegaSergiy\\ColorConverter\\": "src/"
         }
+    },
+    "require": {
+        "chernegasergiy/terminal-ui": "^0.5.0"
     }
 }
