@@ -12,11 +12,11 @@ use ChernegaSergiy\ColorConverter\Model\HsvColor;
 use ChernegaSergiy\ColorConverter\Model\LabColor;
 use ChernegaSergiy\ColorConverter\Model\RgbColor;
 use ChernegaSergiy\ColorConverter\Model\YcbcrColor;
-use ChernegaSergiy\ColorConverter\UI\ColorPreview;
-use ChernegaSergiy\ColorConverter\UI\InteractiveInput;
-use ChernegaSergiy\ColorConverter\UI\InteractiveMenu;
-use ChernegaSergiy\ColorConverter\UI\SliderInput;
-use ChernegaSergiy\ColorConverter\UI\Terminal;
+use ChernegaSergiy\ColorConverter\Ui\ColorPreview;
+use ChernegaSergiy\ColorConverter\Ui\InteractiveInput;
+use ChernegaSergiy\ColorConverter\Ui\InteractiveMenu;
+use ChernegaSergiy\ColorConverter\Ui\SliderInput;
+use ChernegaSergiy\ColorConverter\Ui\Terminal;
 use Exception;
 
 /**

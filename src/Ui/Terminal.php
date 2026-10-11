@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace ChernegaSergiy\ColorConverter\UI;
+namespace ChernegaSergiy\ColorConverter\Ui;
 
 /**
  * Provides utility functions for terminal interaction.
