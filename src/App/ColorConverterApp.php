@@ -13,10 +13,10 @@ use ChernegaSergiy\ColorConverter\Model\LabColor;
 use ChernegaSergiy\ColorConverter\Model\RgbColor;
 use ChernegaSergiy\ColorConverter\Model\YcbcrColor;
 use ChernegaSergiy\ColorConverter\Ui\ColorPreview;
-use ChernegaSergiy\TerminalUI\InteractiveInput;
-use ChernegaSergiy\TerminalUI\InteractiveMenu;
-use ChernegaSergiy\TerminalUI\SliderInput;
-use ChernegaSergiy\TerminalUI\Terminal;
+use ChernegaSergiy\TerminalUi\InteractiveInput;
+use ChernegaSergiy\TerminalUi\InteractiveMenu;
+use ChernegaSergiy\TerminalUi\SliderInput;
+use ChernegaSergiy\TerminalUi\Terminal;
 use Exception;
 
 /**
