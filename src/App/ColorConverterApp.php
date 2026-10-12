@@ -13,10 +13,10 @@ use ChernegaSergiy\ColorConverter\Model\LabColor;
 use ChernegaSergiy\ColorConverter\Model\RgbColor;
 use ChernegaSergiy\ColorConverter\Model\YcbcrColor;
 use ChernegaSergiy\ColorConverter\Ui\ColorPreview;
-use ChernegaSergiy\TerminalUi\InteractiveInput;
-use ChernegaSergiy\TerminalUi\InteractiveMenu;
-use ChernegaSergiy\TerminalUi\SliderInput;
-use ChernegaSergiy\TerminalUi\Terminal;
+use ChernegaSergiy\TerminalUi\Component\Menu;
+use ChernegaSergiy\TerminalUi\Component\Slider;
+use ChernegaSergiy\TerminalUi\Runner;
+use ChernegaSergiy\TerminalUi\Terminal\Terminal;
 use Exception;
 
 /**
@@ -40,7 +40,7 @@ class ColorConverterApp
     public function run() : void
     {
         while (true) {
-            $menu = new InteractiveMenu(
+            $menu = new Menu(
                 "Color Converter Pro",
                 [
                     "RGB → CMYK",
@@ -59,7 +59,14 @@ class ColorConverterApp
                 ]
             );
 
-            $choice = $menu->show();
+            $choice = Runner::run($menu);
+
+            if (null === $choice || 12 === $choice) {
+                Terminal::clearScreen();
+                Terminal::exitAlternativeScreen();
+                echo "\n  До побачення!\n\n";
+                exit(0);
+            }
 
             try {
                 switch ($choice) {
@@ -99,11 +106,6 @@ class ColorConverterApp
                     case 11:
                         $this->showHistory();
                         break;
-                    case 12:
-                        Terminal::clearScreen();
-                        Terminal::exitAlternativeScreen();
-                        echo "\n  До побачення!\n\n";
-                        exit(0);
                 }
             } catch (Exception $e) {
                 $this->showError($e->getMessage());
@@ -119,9 +121,9 @@ class ColorConverterApp
         Terminal::clearScreen();
         echo "\n  \033[1;36mRGB → CMYK Конвертація\033[0m\n\n";
 
-        $r = (new SliderInput("R (червоний)", 0, 255, 128))->read();
-        $g = (new SliderInput("G (зелений)", 0, 255, 128))->read();
-        $b = (new SliderInput("B (синій)", 0, 255, 128))->read();
+        $r = Runner::run(new Slider("R (червоний)", 0, 255, 128));
+        $g = Runner::run(new Slider("G (зелений)", 0, 255, 128));
+        $b = Runner::run(new Slider("B (синій)", 0, 255, 128));
 
         $rgb = new RgbColor($r, $g, $b);
         $cmyk = $rgb->toCmyk();
@@ -138,10 +140,10 @@ class ColorConverterApp
         Terminal::clearScreen();
         echo "\n  \033[1;36mCMYK → RGB Конвертація\033[0m\n\n";
 
-        $c = (new SliderInput("C (cyan)", 0, 100, 50))->read();
-        $m = (new SliderInput("M (magenta)", 0, 100, 50))->read();
-        $y = (new SliderInput("Y (yellow)", 0, 100, 50))->read();
-        $k = (new SliderInput("K (black)", 0, 100, 50))->read();
+        $c = Runner::run(new Slider("C (cyan)", 0, 100, 50));
+        $m = Runner::run(new Slider("M (magenta)", 0, 100, 50));
+        $y = Runner::run(new Slider("Y (yellow)", 0, 100, 50));
+        $k = Runner::run(new Slider("K (black)", 0, 100, 50));
 
         $cmyk = new CmykColor($c, $m, $y, $k);
         $rgb = $cmyk->toRgb();
@@ -158,9 +160,9 @@ class ColorConverterApp
         Terminal::clearScreen();
         echo "\n  \033[1;36mRGB → HSV Конвертація\033[0m\n\n";
 
-        $r = (new SliderInput("R (червоний)", 0, 255, 128))->read();
-        $g = (new SliderInput("G (зелений)", 0, 255, 128))->read();
-        $b = (new SliderInput("B (синій)", 0, 255, 128))->read();
+        $r = Runner::run(new Slider("R (червоний)", 0, 255, 128));
+        $g = Runner::run(new Slider("G (зелений)", 0, 255, 128));
+        $b = Runner::run(new Slider("B (синій)", 0, 255, 128));
 
         $rgb = new RgbColor($r, $g, $b);
         $hsv = $rgb->toHsv();
@@ -177,9 +179,9 @@ class ColorConverterApp
         Terminal::clearScreen();
         echo "\n  \033[1;36mHSV → RGB Конвертація\033[0m\n\n";
 
-        $h = (new SliderInput("H (відтінок)", 0, 360, 180))->read();
-        $s = (new SliderInput("S (насиченість)", 0, 100, 50))->read();
-        $v = (new SliderInput("V (яскравість)", 0, 100, 50))->read();
+        $h = Runner::run(new Slider("H (відтінок)", 0, 360, 180));
+        $s = Runner::run(new Slider("S (насиченість)", 0, 100, 50));
+        $v = Runner::run(new Slider("V (яскравість)", 0, 100, 50));
 
         $hsv = new HsvColor($h, $s, $v);
         $rgb = $hsv->toRgb();
@@ -196,9 +198,9 @@ class ColorConverterApp
         Terminal::clearScreen();
         echo "\n  \033[1;36mRGB → HSL Конвертація\033[0m\n\n";
 
-        $r = (new SliderInput("R (червоний)", 0, 255, 128))->read();
-        $g = (new SliderInput("G (зелений)", 0, 255, 128))->read();
-        $b = (new SliderInput("B (синій)", 0, 255, 128))->read();
+        $r = Runner::run(new Slider("R (червоний)", 0, 255, 128));
+        $g = Runner::run(new Slider("G (зелений)", 0, 255, 128));
+        $b = Runner::run(new Slider("B (синій)", 0, 255, 128));
 
         $rgb = new RgbColor($r, $g, $b);
         $hsl = $rgb->toHsl();
@@ -215,9 +217,9 @@ class ColorConverterApp
         Terminal::clearScreen();
         echo "\n  \033[1;36mHSL → RGB Конвертація\033[0m\n\n";
 
-        $h = (new SliderInput("H (відтінок)", 0, 360, 180))->read();
-        $s = (new SliderInput("S (насиченість)", 0, 100, 50))->read();
-        $l = (new SliderInput("L (світлість)", 0, 100, 50))->read();
+        $h = Runner::run(new Slider("H (відтінок)", 0, 360, 180));
+        $s = Runner::run(new Slider("S (насиченість)", 0, 100, 50));
+        $l = Runner::run(new Slider("L (світлість)", 0, 100, 50));
 
         $hsl = new HslColor($h, $s, $l);
         $rgb = $hsl->toRgb();
@@ -234,9 +236,9 @@ class ColorConverterApp
         Terminal::clearScreen();
         echo "\n  \033[1;36mRGB → Lab Конвертація\033[0m\n\n";
 
-        $r = (new SliderInput("R (червоний)", 0, 255, 128))->read();
-        $g = (new SliderInput("G (зелений)", 0, 255, 128))->read();
-        $b = (new SliderInput("B (синій)", 0, 255, 128))->read();
+        $r = Runner::run(new Slider("R (червоний)", 0, 255, 128));
+        $g = Runner::run(new Slider("G (зелений)", 0, 255, 128));
+        $b = Runner::run(new Slider("B (синій)", 0, 255, 128));
 
         $rgb = new RgbColor($r, $g, $b);
         $lab = $rgb->toLab();
@@ -253,9 +255,9 @@ class ColorConverterApp
         Terminal::clearScreen();
         echo "\n  \033[1;36mLab → RGB Конвертація\033[0m\n\n";
 
-        $l = (new SliderInput("L (світлість)", 0, 100, 50))->read();
-        $a = (new SliderInput("a (зелений-червоний)", -128, 127, 0))->read();
-        $b = (new SliderInput("b (синій-жовтий)", -128, 127, 0))->read();
+        $l = Runner::run(new Slider("L (світлість)", 0, 100, 50));
+        $a = Runner::run(new Slider("a (зелений-червоний)", -128, 127, 0));
+        $b = Runner::run(new Slider("b (синій-жовтий)", -128, 127, 0));
 
         $lab = new LabColor($l, $a, $b);
         $rgb = $lab->toRgb();
@@ -272,9 +274,9 @@ class ColorConverterApp
         Terminal::clearScreen();
         echo "\n  \033[1;36mRGB → YCbCr Конвертація\033[0m\n\n";
 
-        $r = (new SliderInput("R (червоний)", 0, 255, 128))->read();
-        $g = (new SliderInput("G (зелений)", 0, 255, 128))->read();
-        $b = (new SliderInput("B (синій)", 0, 255, 128))->read();
+        $r = Runner::run(new Slider("R (червоний)", 0, 255, 128));
+        $g = Runner::run(new Slider("G (зелений)", 0, 255, 128));
+        $b = Runner::run(new Slider("B (синій)", 0, 255, 128));
 
         $rgb = new RgbColor($r, $g, $b);
         $ycbcr = $rgb->toYcbcr();
@@ -291,9 +293,9 @@ class ColorConverterApp
         Terminal::clearScreen();
         echo "\n  \033[1;36mYCbCr → RGB Конвертація\033[0m\n\n";
 
-        $y = (new SliderInput("Y (Luma)", 0, 255, 128))->read();
-        $cb = (new SliderInput("Cb (Chroma blue)", 0, 255, 128))->read();
-        $cr = (new SliderInput("Cr (Chroma red)", 0, 255, 128))->read();
+        $y = Runner::run(new Slider("Y (Luma)", 0, 255, 128));
+        $cb = Runner::run(new Slider("Cb (Chroma blue)", 0, 255, 128));
+        $cr = Runner::run(new Slider("Cr (Chroma red)", 0, 255, 128));
 
         $ycbcr = new YcbcrColor($y, $cb, $cr);
         $rgb = $ycbcr->toRgb();
@@ -310,9 +312,9 @@ class ColorConverterApp
         Terminal::clearScreen();
         echo "\n  \033[1;36mRGB → Всі формати\033[0m\n\n";
 
-        $r = (new SliderInput("R (червоний)", 0, 255, 128))->read();
-        $g = (new SliderInput("G (зелений)", 0, 255, 128))->read();
-        $b = (new SliderInput("B (синій)", 0, 255, 128))->read();
+        $r = Runner::run(new Slider("R (червоний)", 0, 255, 128));
+        $g = Runner::run(new Slider("G (зелений)", 0, 255, 128));
+        $b = Runner::run(new Slider("B (синій)", 0, 255, 128));
 
         $rgb = new RgbColor($r, $g, $b);
         $cmyk = $rgb->toCmyk();
