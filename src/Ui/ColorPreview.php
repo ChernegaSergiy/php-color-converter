@@ -102,7 +102,7 @@ class ColorPreview extends AbstractComponent
     public static function show(RgbColor $color, bool $compact = false) : void
     {
         if ($compact) {
-            echo (new self($color, compact: true, instruction: ''))->render() . "\n";
+            echo (new self($color, compact: true, instruction: ''))->render();
 
             return;
         }
