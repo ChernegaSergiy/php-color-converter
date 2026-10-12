@@ -3,8 +3,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use ChernegaSergiy\ColorConverter\App\ColorConverterApp;
-use ChernegaSergiy\ColorConverter\Ui\Terminal;
-use Exception;
+use ChernegaSergiy\TerminalUi\Terminal\Terminal;
 
 if (php_sapi_name() === 'cli') {
     try {
@@ -12,9 +11,7 @@ if (php_sapi_name() === 'cli') {
         $app = new ColorConverterApp();
         $app->run();
     } catch (Exception $e) {
-        Terminal::disableRawMode();
-        Terminal::showCursor();
-        Terminal::exitAlternativeScreen();
+        Terminal::restore();
         echo "\n\033[1;31mКритична помилка:\033[0m " . $e->getMessage() . "\n\n";
         exit(1);
     }

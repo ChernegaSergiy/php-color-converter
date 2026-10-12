@@ -4,15 +4,59 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc43619cf17c2ef11aa31d1853af8474",
-    "packages": [],
+    "content-hash": "1ee8ed89908e1e1e84542c15bddb78aa",
+    "packages": [
+        {
+            "name": "chernegasergiy/terminal-ui",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ChernegaSergiy/terminal-ui.git",
+                "reference": "46cdd0f9e7ca52f1a79512d41d42090b1a3821d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ChernegaSergiy/terminal-ui/zipball/46cdd0f9e7ca52f1a79512d41d42090b1a3821d0",
+                "reference": "46cdd0f9e7ca52f1a79512d41d42090b1a3821d0",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.95"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ChernegaSergiy\\TerminalUi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LicenseRef-CSSM-Unlimited-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Serhii Cherneha",
+                    "email": "chernegasergiy3@gmail.com"
+                }
+            ],
+            "description": "A library for creating interactive terminal UI components in PHP.",
+            "support": {
+                "issues": "https://github.com/ChernegaSergiy/terminal-ui/issues",
+                "source": "https://github.com/ChernegaSergiy/terminal-ui/tree/v0.5.0"
+            },
+            "time": "2026-10-11T23:10:03+00:00"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.6.0"
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.9.0"
 }

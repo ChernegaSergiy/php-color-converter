@@ -21,12 +21,16 @@ A standalone, interactive command-line tool for converting color models, written
 - **Live Previews:** See a preview of the color swatch in your terminal as you select values.
 - **Slider Input:** Use arrow keys to intuitively adjust color values with a visual slider.
 - **Conversion History:** Keeps a running history of your recent color conversions.
-- **Zero Dependencies:** A single script that runs without any external libraries or Composer packages.
+- **Modular UI Architecture:** Built with [chernegasergiy/terminal-ui](https://github.com/ChernegaSergiy/terminal-ui) for interactive components and clean terminal rendering.
 
-## How to Run
+## Installation & Running
 
-1. Ensure you have PHP installed.
-2. Run the script from your terminal:
+1. Ensure you have PHP (>= 8.1) and [Composer](https://getcomposer.org/) installed.
+2. Install project dependencies:
+   ```bash
+   composer install
+   ```
+3. Run the application:
    ```bash
    php converter.php
    ```
