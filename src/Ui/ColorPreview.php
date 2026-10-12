@@ -26,7 +26,7 @@ class ColorPreview extends AbstractComponent
      */
     public function __construct(
         RgbColor $color,
-        string $label = 'Попередній перегляд',
+        string $label = 'Попередній перегляд:',
         bool $compact = false,
         string $instruction = 'Натисніть будь-яку клавішу або Enter для продовження'
     ) {
@@ -81,19 +81,12 @@ class ColorPreview extends AbstractComponent
             $lines[] = '';
         }
 
-        if (Ansi::isEnabled()) {
-            $lines[] = "  {$bg}                    {$reset}";
-            $lines[] = "  {$bg}                    {$reset}";
-            $lines[] = "  {$bg}                    {$reset}";
-        } else {
-            $lines[] = '  [                    ]';
-            $lines[] = '  [   COLOR PREVIEW    ]';
-            $lines[] = '  [                    ]';
-        }
-
+        $lines[] = "{$bg}                    {$reset}";
+        $lines[] = "{$bg}                    {$reset}";
+        $lines[] = "{$bg}                    {$reset}";
         $lines[] = '';
-        $lines[] = '  HEX: ' . Ansi::style(Ansi::BOLD, $hex);
-        $lines[] = '  RGB: ' . Ansi::style(Ansi::BOLD, $rgbStr);
+        $lines[] = 'HEX: ' . Ansi::style(Ansi::BOLD, $hex);
+        $lines[] = 'RGB: ' . Ansi::style(Ansi::BOLD, $rgbStr);
 
         if ('' !== $this->instruction) {
             $lines[] = '';
@@ -108,6 +101,15 @@ class ColorPreview extends AbstractComponent
      */
     public static function show(RgbColor $color, bool $compact = false) : void
     {
-        echo (new self($color, compact: $compact, instruction: ''))->render() . "\n";
+        if ($compact) {
+            echo (new self($color, compact: true, instruction: ''))->render() . "\n";
+
+            return;
+        }
+
+        echo "\n";
+        foreach (explode("\n", (new self($color, instruction: ''))->render()) as $line) {
+            echo ('' === $line ? '' : '  ' . $line) . "\n";
+        }
     }
 }
