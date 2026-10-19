@@ -4,27 +4,30 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ee8ed89908e1e1e84542c15bddb78aa",
+    "content-hash": "22e24b9444029db2c3a3871708453d0a",
     "packages": [
         {
             "name": "chernegasergiy/terminal-ui",
-            "version": "v0.5.0",
+            "version": "v0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ChernegaSergiy/terminal-ui.git",
-                "reference": "46cdd0f9e7ca52f1a79512d41d42090b1a3821d0"
+                "reference": "f11c97137705002fedda159ae3630d4ef051d9cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ChernegaSergiy/terminal-ui/zipball/46cdd0f9e7ca52f1a79512d41d42090b1a3821d0",
-                "reference": "46cdd0f9e7ca52f1a79512d41d42090b1a3821d0",
+                "url": "https://api.github.com/repos/ChernegaSergiy/terminal-ui/zipball/f11c97137705002fedda159ae3630d4ef051d9cb",
+                "reference": "f11c97137705002fedda159ae3630d4ef051d9cb",
                 "shasum": ""
             },
             "require": {
+                "ext-mbstring": "*",
                 "php": ">=8.1"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.95"
+                "friendsofphp/php-cs-fixer": "^3.95",
+                "phpstan/phpstan": "^2.3",
+                "phpunit/phpunit": "^10.5 || ^11.5 || ^12.5 || ^13.4"
             },
             "type": "library",
             "autoload": {
@@ -45,9 +48,9 @@
             "description": "A library for creating interactive terminal UI components in PHP.",
             "support": {
                 "issues": "https://github.com/ChernegaSergiy/terminal-ui/issues",
-                "source": "https://github.com/ChernegaSergiy/terminal-ui/tree/v0.5.0"
+                "source": "https://github.com/ChernegaSergiy/terminal-ui/tree/v0.8.0"
             },
-            "time": "2026-10-11T23:10:03+00:00"
+            "time": "2026-10-12T11:34:21+00:00"
         }
     ],
     "packages-dev": [],

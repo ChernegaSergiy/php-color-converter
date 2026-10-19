@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "chernegasergiy/terminal-ui": "^0.5.0"
+        "chernegasergiy/terminal-ui": "^0.8.0"
     },
     "autoload": {
         "psr-4": {
